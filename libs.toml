@@ -1,0 +1,9 @@
+[versions]
+kotlin-version = "1.9.0"
+lifecycle-runtime-ktx-version = "2.6.2"
+activity-compose-version = "1.8.2"
+
+[libraries]
+kotlin-android-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "kotlin-version" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx-version" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose-version" }
