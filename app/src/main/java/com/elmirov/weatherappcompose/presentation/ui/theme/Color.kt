@@ -1,4 +1,4 @@
-package com.elmirov.weatherappcompose.ui.theme
+package com.elmirov.weatherappcompose.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

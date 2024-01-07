@@ -1,4 +1,4 @@
-package com.elmirov.weatherappcompose.ui.theme
+package com.elmirov.weatherappcompose.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
