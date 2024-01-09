@@ -1,7 +1,7 @@
 package com.elmirov.weatherappcompose.di
 
-import com.elmirov.weatherappcompose.data.network.api.KeyInterceptor
-import com.elmirov.weatherappcompose.data.network.api.WeatherApi
+import com.elmirov.weatherappcompose.data.remote.api.KeyInterceptor
+import com.elmirov.weatherappcompose.data.remote.api.WeatherApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

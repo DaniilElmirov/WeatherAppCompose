@@ -7,5 +7,5 @@ import dagger.Component
         DataModule::class,
     ]
 )
-class AppComponent {
+interface AppComponent {
 }

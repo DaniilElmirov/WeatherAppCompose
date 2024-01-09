@@ -1,4 +1,4 @@
-package com.elmirov.weatherappcompose.data.network.api
+package com.elmirov.weatherappcompose.data.remote.api
 
 import com.elmirov.weatherappcompose.BuildConfig
 import okhttp3.Interceptor
@@ -10,6 +10,7 @@ class KeyInterceptor @Inject constructor() : Interceptor {
     companion object {
         private const val KEY = "key"
     }
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
 

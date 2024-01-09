@@ -7,5 +7,4 @@ data class Weather(
     val conditionText: String,
     val conditionUrl: String,
     val date: Calendar,
-
 )

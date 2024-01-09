@@ -1,4 +1,4 @@
-package com.elmirov.weatherappcompose.data.network.dto
+package com.elmirov.weatherappcompose.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 

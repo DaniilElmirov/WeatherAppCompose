@@ -1,8 +1,8 @@
-package com.elmirov.weatherappcompose.data.network.api
+package com.elmirov.weatherappcompose.data.remote.api
 
-import com.elmirov.weatherappcompose.data.network.dto.CityDto
-import com.elmirov.weatherappcompose.data.network.dto.WeatherCurrentDto
-import com.elmirov.weatherappcompose.data.network.dto.WeatherForecastDto
+import com.elmirov.weatherappcompose.data.remote.dto.CityDto
+import com.elmirov.weatherappcompose.data.remote.dto.WeatherCurrentDto
+import com.elmirov.weatherappcompose.data.remote.dto.WeatherForecastDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
