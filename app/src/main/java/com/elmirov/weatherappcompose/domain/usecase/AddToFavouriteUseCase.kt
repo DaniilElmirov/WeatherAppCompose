@@ -9,6 +9,6 @@ class AddToFavouriteUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(city: City) {
-        repository.addToFavourite(city)
+        repository.add(city)
     }
 }

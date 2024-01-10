@@ -8,6 +8,6 @@ class DeleteFromFavouriteUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(cityId: Int) {
-        repository.deleteFromFavourite(cityId)
+        repository.delete(cityId)
     }
 }
