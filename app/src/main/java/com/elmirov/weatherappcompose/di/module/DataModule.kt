@@ -10,7 +10,13 @@ import com.elmirov.weatherappcompose.data.local.db.FavouriteCitiesDao
 import com.elmirov.weatherappcompose.data.local.db.FavouriteDatabase
 import com.elmirov.weatherappcompose.data.remote.api.KeyInterceptor
 import com.elmirov.weatherappcompose.data.remote.api.WeatherApi
+import com.elmirov.weatherappcompose.data.repository.FavouriteRepositoryImpl
+import com.elmirov.weatherappcompose.data.repository.SearchRepositoryImpl
+import com.elmirov.weatherappcompose.data.repository.WeatherRepositoryImpl
 import com.elmirov.weatherappcompose.di.annotation.AppScope
+import com.elmirov.weatherappcompose.domain.repository.FavouriteRepository
+import com.elmirov.weatherappcompose.domain.repository.SearchRepository
+import com.elmirov.weatherappcompose.domain.repository.WeatherRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -76,4 +82,16 @@ interface DataBindModule {
     @AppScope
     @Binds
     fun bindWeatherRemoteDataSource(impl: WeatherRemoteDataSourceImpl): WeatherRemoteDataSource
+
+    @AppScope
+    @Binds
+    fun bindFavouriteRepository(impl: FavouriteRepositoryImpl): FavouriteRepository
+
+    @AppScope
+    @Binds
+    fun bindSearchRepository(impl: SearchRepositoryImpl): SearchRepository
+
+    @AppScope
+    @Binds
+    fun bindWeatherRepository(impl: WeatherRepositoryImpl): WeatherRepository
 }
