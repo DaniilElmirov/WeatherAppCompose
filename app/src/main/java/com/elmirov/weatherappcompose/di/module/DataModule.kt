@@ -1,7 +1,8 @@
-package com.elmirov.weatherappcompose.di
+package com.elmirov.weatherappcompose.di.module
 
 import com.elmirov.weatherappcompose.data.remote.api.KeyInterceptor
 import com.elmirov.weatherappcompose.data.remote.api.WeatherApi
+import com.elmirov.weatherappcompose.di.annotation.AppScope
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -17,6 +18,7 @@ interface DataModule {
 
         private const val BASE_URL = "https://api.weatherapi.com/v1/"
 
+        @AppScope
         @Provides
         fun provideHttpClient(
             keyInterceptor: KeyInterceptor,
@@ -25,6 +27,7 @@ interface DataModule {
                 .addInterceptor(keyInterceptor)
                 .build()
 
+        @AppScope
         @Provides
         fun provideRetrofit(
             client: OkHttpClient,
@@ -34,6 +37,7 @@ interface DataModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+        @AppScope
         @Provides
         fun provideWeatherApi(retrofit: Retrofit): WeatherApi =
             retrofit.create()
