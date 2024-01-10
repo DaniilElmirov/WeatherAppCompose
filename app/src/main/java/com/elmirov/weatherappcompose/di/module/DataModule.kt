@@ -1,5 +1,9 @@
 package com.elmirov.weatherappcompose.di.module
 
+import android.content.Context
+import androidx.room.Room
+import com.elmirov.weatherappcompose.data.local.db.FavouriteCitiesDao
+import com.elmirov.weatherappcompose.data.local.db.FavouriteDatabase
 import com.elmirov.weatherappcompose.data.remote.api.KeyInterceptor
 import com.elmirov.weatherappcompose.data.remote.api.WeatherApi
 import com.elmirov.weatherappcompose.di.annotation.AppScope
@@ -41,5 +45,19 @@ interface DataModule {
         @Provides
         fun provideWeatherApi(retrofit: Retrofit): WeatherApi =
             retrofit.create()
+
+        @AppScope
+        @Provides
+        fun provideFavouriteDatabase(context: Context): FavouriteDatabase =
+            Room.databaseBuilder(
+                context = context,
+                klass = FavouriteDatabase::class.java,
+                FavouriteDatabase.DATABASE_NAME
+            ).build()
+
+        @AppScope
+        @Provides
+        fun provideFavouriteCitiesDao(database: FavouriteDatabase): FavouriteCitiesDao =
+            database.favouriteCitiesDao()
     }
 }
