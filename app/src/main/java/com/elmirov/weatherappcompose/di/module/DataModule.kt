@@ -2,11 +2,16 @@ package com.elmirov.weatherappcompose.di.module
 
 import android.content.Context
 import androidx.room.Room
+import com.elmirov.weatherappcompose.data.datasource.FavouriteCitiesLocalDatasource
+import com.elmirov.weatherappcompose.data.datasource.FavouriteCitiesLocalDatasourceImpl
+import com.elmirov.weatherappcompose.data.datasource.WeatherRemoteDataSource
+import com.elmirov.weatherappcompose.data.datasource.WeatherRemoteDataSourceImpl
 import com.elmirov.weatherappcompose.data.local.db.FavouriteCitiesDao
 import com.elmirov.weatherappcompose.data.local.db.FavouriteDatabase
 import com.elmirov.weatherappcompose.data.remote.api.KeyInterceptor
 import com.elmirov.weatherappcompose.data.remote.api.WeatherApi
 import com.elmirov.weatherappcompose.di.annotation.AppScope
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -64,4 +69,11 @@ class DataModule {
 @Module
 interface DataBindModule {
 
+    @AppScope
+    @Binds
+    fun bindFavouriteCitiesLocalDatasource(impl: FavouriteCitiesLocalDatasourceImpl): FavouriteCitiesLocalDatasource
+
+    @AppScope
+    @Binds
+    fun bindWeatherRemoteDataSource(impl: WeatherRemoteDataSourceImpl): WeatherRemoteDataSource
 }
