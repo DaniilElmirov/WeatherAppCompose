@@ -14,50 +14,54 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
+@Module(includes = [DataBindModule::class])
+class DataModule {
 
-@Module
-interface DataModule {
-
-    companion object {
+    private companion object {
 
         private const val BASE_URL = "https://api.weatherapi.com/v1/"
+    }
 
-        @AppScope
-        @Provides
-        fun provideHttpClient(
-            keyInterceptor: KeyInterceptor,
-        ): OkHttpClient =
-            OkHttpClient.Builder()
-                .addInterceptor(keyInterceptor)
-                .build()
-
-        @AppScope
-        @Provides
-        fun provideRetrofit(
-            client: OkHttpClient,
-        ): Retrofit = Retrofit.Builder()
-            .client(client)
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+    @AppScope
+    @Provides
+    fun provideHttpClient(
+        keyInterceptor: KeyInterceptor,
+    ): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(keyInterceptor)
             .build()
 
-        @AppScope
-        @Provides
-        fun provideWeatherApi(retrofit: Retrofit): WeatherApi =
-            retrofit.create()
+    @AppScope
+    @Provides
+    fun provideRetrofit(
+        client: OkHttpClient,
+    ): Retrofit = Retrofit.Builder()
+        .client(client)
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
-        @AppScope
-        @Provides
-        fun provideFavouriteDatabase(context: Context): FavouriteDatabase =
-            Room.databaseBuilder(
-                context = context,
-                klass = FavouriteDatabase::class.java,
-                FavouriteDatabase.DATABASE_NAME
-            ).build()
+    @AppScope
+    @Provides
+    fun provideWeatherApi(retrofit: Retrofit): WeatherApi =
+        retrofit.create()
 
-        @AppScope
-        @Provides
-        fun provideFavouriteCitiesDao(database: FavouriteDatabase): FavouriteCitiesDao =
-            database.favouriteCitiesDao()
-    }
+    @AppScope
+    @Provides
+    fun provideFavouriteDatabase(context: Context): FavouriteDatabase =
+        Room.databaseBuilder(
+            context = context,
+            klass = FavouriteDatabase::class.java,
+            FavouriteDatabase.DATABASE_NAME
+        ).build()
+
+    @AppScope
+    @Provides
+    fun provideFavouriteCitiesDao(database: FavouriteDatabase): FavouriteCitiesDao =
+        database.favouriteCitiesDao()
+}
+
+@Module
+interface DataBindModule {
+
 }
