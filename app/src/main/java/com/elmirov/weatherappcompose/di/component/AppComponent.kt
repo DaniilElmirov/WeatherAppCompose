@@ -1,6 +1,6 @@
 package com.elmirov.weatherappcompose.di.component
 
-import android.app.Application
+import android.content.Context
 import com.elmirov.weatherappcompose.WeatherApplication
 import com.elmirov.weatherappcompose.di.annotation.AppScope
 import com.elmirov.weatherappcompose.di.module.DataModule
@@ -23,7 +23,7 @@ interface AppComponent {
     @Component.Factory
     interface Factory {
         fun create(
-            @BindsInstance application: Application,
+            @BindsInstance context: Context,
         ): AppComponent
     }
 }
