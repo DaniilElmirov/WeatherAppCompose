@@ -4,6 +4,7 @@ import android.content.Context
 import com.elmirov.weatherappcompose.WeatherApplication
 import com.elmirov.weatherappcompose.di.annotation.AppScope
 import com.elmirov.weatherappcompose.di.module.DataModule
+import com.elmirov.weatherappcompose.di.module.PresentationModule
 import com.elmirov.weatherappcompose.presentation.MainActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -12,6 +13,7 @@ import dagger.Component
 @Component(
     modules = [
         DataModule::class,
+        PresentationModule::class,
     ]
 )
 interface AppComponent {

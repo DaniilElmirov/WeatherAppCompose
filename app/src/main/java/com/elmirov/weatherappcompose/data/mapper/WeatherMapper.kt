@@ -17,7 +17,7 @@ fun WeatherForecastDto.toEntity(): Forecast = Forecast(
         Weather(
             tempCelsius = dayWeatherDto.tempCelsius,
             conditionText = dayWeatherDto.conditionDto.text,
-            conditionUrl = dayWeatherDto.conditionDto.iconUrl.toCorrectIconUrl(),
+            conditionIconUrl = dayWeatherDto.conditionDto.iconUrl.toCorrectIconUrl(),
             date = dayDto.date.toCalendar(),
         )
     }
@@ -26,7 +26,7 @@ fun WeatherForecastDto.toEntity(): Forecast = Forecast(
 private fun WeatherDto.toEntity(): Weather = Weather(
     tempCelsius = tempCelsius,
     conditionText = conditionDto.text,
-    conditionUrl = conditionDto.iconUrl.toCorrectIconUrl(),
+    conditionIconUrl = conditionDto.iconUrl.toCorrectIconUrl(),
     date = date.toCalendar(),
 )
 
