@@ -10,12 +10,12 @@ import com.elmirov.weatherappcompose.presentation.detail.store.DetailsStore
 import com.elmirov.weatherappcompose.presentation.detail.store.DetailsStoreFactory
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class DefaultDetailsComponent @Inject constructor(
+class DefaultDetailsComponent @AssistedInject constructor(
     private val detailsStoreFactory: DetailsStoreFactory,
     @Assisted("city") private val city: City,
     @Assisted("onBackClicked") private val onBackClicked: () -> Unit,

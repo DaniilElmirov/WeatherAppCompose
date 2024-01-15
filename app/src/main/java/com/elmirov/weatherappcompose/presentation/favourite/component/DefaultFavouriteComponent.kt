@@ -10,12 +10,12 @@ import com.elmirov.weatherappcompose.presentation.favourite.store.FavouriteStore
 import com.elmirov.weatherappcompose.presentation.favourite.store.FavouriteStoreFactory
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class DefaultFavouriteComponent @Inject constructor(
+class DefaultFavouriteComponent @AssistedInject constructor(
     private val favouriteStoreFactory: FavouriteStoreFactory,
     @Assisted("onCityItemClicked") private val onCityItemClicked: (City) -> Unit,
     @Assisted("onSearchClicked") private val onSearchClicked: () -> Unit,

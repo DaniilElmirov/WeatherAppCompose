@@ -11,12 +11,12 @@ import com.elmirov.weatherappcompose.presentation.search.store.SearchStore
 import com.elmirov.weatherappcompose.presentation.search.store.SearchStoreFactory
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class DefaultSearchComponent @Inject constructor(
+class DefaultSearchComponent @AssistedInject constructor(
     private val searchStoreFactory: SearchStoreFactory,
     @Assisted("openReason") private val openReason: OpenReason,
     @Assisted("onBackClicked") private val onBackClicked: () -> Unit,
