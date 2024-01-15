@@ -8,16 +8,18 @@ import com.elmirov.weatherappcompose.domain.entity.City
 import com.elmirov.weatherappcompose.extension.componentScope
 import com.elmirov.weatherappcompose.presentation.detail.store.DetailsStore
 import com.elmirov.weatherappcompose.presentation.detail.store.DetailsStoreFactory
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DefaultDetailsComponent @Inject constructor(
-    private val city: City,
     private val detailsStoreFactory: DetailsStoreFactory,
-    private val onBackClicked: () -> Unit,
-    componentContext: ComponentContext,
+    @Assisted("city") private val city: City,
+    @Assisted("onBackClicked") private val onBackClicked: () -> Unit,
+    @Assisted("componentContext") componentContext: ComponentContext,
 ) : DetailsComponent, ComponentContext by componentContext {
 
     private val store = instanceKeeper.getStore { detailsStoreFactory.create(city) }
@@ -43,5 +45,14 @@ class DefaultDetailsComponent @Inject constructor(
 
     override fun onClickChangeFavouriteStatus() {
         store.accept(DetailsStore.Intent.ClickChangeFavouriteStatus)
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(
+            @Assisted("city") city: City,
+            @Assisted("onBackClicked") onBackClicked: () -> Unit,
+            @Assisted("componentContext") componentContext: ComponentContext,
+        ): DefaultDetailsComponent
     }
 }
