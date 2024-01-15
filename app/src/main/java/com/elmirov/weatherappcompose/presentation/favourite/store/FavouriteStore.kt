@@ -1,4 +1,4 @@
-package com.elmirov.weatherappcompose.presentation.favourite
+package com.elmirov.weatherappcompose.presentation.favourite.store
 
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.Store
@@ -8,9 +8,9 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.elmirov.weatherappcompose.domain.entity.City
 import com.elmirov.weatherappcompose.domain.usecase.GetCurrentWeatherUseCase
 import com.elmirov.weatherappcompose.domain.usecase.GetFavouriteCitiesUseCase
-import com.elmirov.weatherappcompose.presentation.favourite.FavouriteStore.Intent
-import com.elmirov.weatherappcompose.presentation.favourite.FavouriteStore.Label
-import com.elmirov.weatherappcompose.presentation.favourite.FavouriteStore.State
+import com.elmirov.weatherappcompose.presentation.favourite.store.FavouriteStore.Intent
+import com.elmirov.weatherappcompose.presentation.favourite.store.FavouriteStore.Label
+import com.elmirov.weatherappcompose.presentation.favourite.store.FavouriteStore.State
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
