@@ -9,18 +9,20 @@ import com.elmirov.weatherappcompose.extension.componentScope
 import com.elmirov.weatherappcompose.presentation.search.store.OpenReason
 import com.elmirov.weatherappcompose.presentation.search.store.SearchStore
 import com.elmirov.weatherappcompose.presentation.search.store.SearchStoreFactory
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class DefaultSearchComponent @Inject constructor(
-    private val openReason: OpenReason,
     private val searchStoreFactory: SearchStoreFactory,
-    private val onBackClicked: () -> Unit,
-    private val onForecastForCityRequested: (City) -> Unit,
-    private val onCitySavedToFavouriteClicked: () -> Unit,
-    componentContext: ComponentContext,
+    @Assisted("openReason") private val openReason: OpenReason,
+    @Assisted("onBackClicked") private val onBackClicked: () -> Unit,
+    @Assisted("onForecastForCityRequested") private val onForecastForCityRequested: (City) -> Unit,
+    @Assisted("onCitySavedToFavouriteClicked") private val onCitySavedToFavouriteClicked: () -> Unit,
+    @Assisted("componentContext") componentContext: ComponentContext,
 ) : SearchComponent, ComponentContext by componentContext {
 
     private val store = instanceKeeper.getStore { searchStoreFactory.create(openReason) }
@@ -58,5 +60,16 @@ class DefaultSearchComponent @Inject constructor(
 
     override fun onClickCity(city: City) {
         store.accept(SearchStore.Intent.ClickCity(city))
+    }
+
+    @AssistedFactory
+    interface Factory {
+        fun create(
+            @Assisted("openReason") openReason: OpenReason,
+            @Assisted("onBackClicked") onBackClicked: () -> Unit, //Ключи можно указывать только для одинаковых сигнатур
+            @Assisted("onForecastForCityRequested") onForecastForCityRequested: (City) -> Unit,
+            @Assisted("onCitySavedToFavouriteClicked") onCitySavedToFavouriteClicked: () -> Unit,
+            @Assisted("componentContext") componentContext: ComponentContext,
+        ): DefaultSearchComponent
     }
 }
