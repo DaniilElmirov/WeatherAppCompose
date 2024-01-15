@@ -1,4 +1,4 @@
-package com.elmirov.weatherappcompose.presentation.search
+package com.elmirov.weatherappcompose.presentation.search.store
 
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.Store
@@ -8,9 +8,9 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.elmirov.weatherappcompose.domain.entity.City
 import com.elmirov.weatherappcompose.domain.usecase.AddToFavouriteUseCase
 import com.elmirov.weatherappcompose.domain.usecase.SearchCityUseCase
-import com.elmirov.weatherappcompose.presentation.search.SearchStore.Intent
-import com.elmirov.weatherappcompose.presentation.search.SearchStore.Label
-import com.elmirov.weatherappcompose.presentation.search.SearchStore.State
+import com.elmirov.weatherappcompose.presentation.search.store.SearchStore.Intent
+import com.elmirov.weatherappcompose.presentation.search.store.SearchStore.Label
+import com.elmirov.weatherappcompose.presentation.search.store.SearchStore.State
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject

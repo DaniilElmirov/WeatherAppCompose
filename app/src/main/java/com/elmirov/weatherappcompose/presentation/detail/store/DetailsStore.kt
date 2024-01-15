@@ -1,4 +1,4 @@
-package com.elmirov.weatherappcompose.presentation.detail
+package com.elmirov.weatherappcompose.presentation.detail.store
 
 import com.arkivanov.mvikotlin.core.store.Reducer
 import com.arkivanov.mvikotlin.core.store.Store
@@ -11,9 +11,9 @@ import com.elmirov.weatherappcompose.domain.usecase.AddToFavouriteUseCase
 import com.elmirov.weatherappcompose.domain.usecase.DeleteFromFavouriteUseCase
 import com.elmirov.weatherappcompose.domain.usecase.GetForecastUseCase
 import com.elmirov.weatherappcompose.domain.usecase.ObserveFavouriteStateUseCase
-import com.elmirov.weatherappcompose.presentation.detail.DetailsStore.Intent
-import com.elmirov.weatherappcompose.presentation.detail.DetailsStore.Label
-import com.elmirov.weatherappcompose.presentation.detail.DetailsStore.State
+import com.elmirov.weatherappcompose.presentation.detail.store.DetailsStore.Intent
+import com.elmirov.weatherappcompose.presentation.detail.store.DetailsStore.Label
+import com.elmirov.weatherappcompose.presentation.detail.store.DetailsStore.State
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
