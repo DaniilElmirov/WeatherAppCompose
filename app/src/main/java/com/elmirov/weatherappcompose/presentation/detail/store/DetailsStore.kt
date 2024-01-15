@@ -22,7 +22,7 @@ interface DetailsStore : Store<Intent, State, Label> {
     sealed interface Intent {
         data object ClickBack : Intent
 
-        data object ChangeFavouriteStatus : Intent
+        data object ClickChangeFavouriteStatus : Intent
     }
 
     data class State(
@@ -112,7 +112,7 @@ class DetailsStoreFactory @Inject constructor(
     private inner class ExecutorImpl : CoroutineExecutor<Intent, Action, State, Msg, Label>() {
         override fun executeIntent(intent: Intent, getState: () -> State) {
             when (intent) {
-                Intent.ChangeFavouriteStatus -> {
+                Intent.ClickChangeFavouriteStatus -> {
                     scope.launch {
                         val state = getState()
 
