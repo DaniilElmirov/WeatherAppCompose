@@ -8,7 +8,7 @@ import com.elmirov.weatherappcompose.data.datasource.WeatherRemoteDataSource
 import com.elmirov.weatherappcompose.data.datasource.WeatherRemoteDataSourceImpl
 import com.elmirov.weatherappcompose.data.local.db.FavouriteCitiesDao
 import com.elmirov.weatherappcompose.data.local.db.FavouriteDatabase
-import com.elmirov.weatherappcompose.data.remote.api.KeyInterceptor
+import com.elmirov.weatherappcompose.data.remote.api.RequestInterceptor
 import com.elmirov.weatherappcompose.data.remote.api.WeatherApi
 import com.elmirov.weatherappcompose.data.repository.FavouriteRepositoryImpl
 import com.elmirov.weatherappcompose.data.repository.SearchRepositoryImpl
@@ -36,10 +36,10 @@ class DataModule {
     @AppScope
     @Provides
     fun provideHttpClient(
-        keyInterceptor: KeyInterceptor,
+        requestInterceptor: RequestInterceptor,
     ): OkHttpClient =
         OkHttpClient.Builder()
-            .addInterceptor(keyInterceptor)
+            .addInterceptor(requestInterceptor)
             .build()
 
     @AppScope
