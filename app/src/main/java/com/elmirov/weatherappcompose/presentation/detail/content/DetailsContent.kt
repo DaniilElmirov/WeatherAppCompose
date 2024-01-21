@@ -1,6 +1,5 @@
 package com.elmirov.weatherappcompose.presentation.detail.content
 
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.tween
@@ -81,7 +80,7 @@ fun DetailsContent(component: DetailsComponent) {
                 .padding(padding),
         ) {
             when (val forecastState = state.forecastState) {
-                DetailsStore.State.ForecastState.Error -> Error()
+                DetailsStore.State.ForecastState.Error -> Unit
 
                 DetailsStore.State.ForecastState.Initial -> Unit
 
@@ -126,11 +125,6 @@ private fun TopBar(
             }
         },
     )
-}
-
-@Composable
-private fun Error() {
-
 }
 
 @OptIn(ExperimentalGlideComposeApi::class)
@@ -226,7 +220,6 @@ private fun UpcomingWeather(upcoming: List<Weather>) {
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Log.d("upcoming", upcoming.size.toString())
                 upcoming.forEach {
                     SmallWeatherCard(weather = it)
                 }
